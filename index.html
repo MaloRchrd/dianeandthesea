@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Snorkeling Creole Rock</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f9fb;
+color:#333;
+}
+
+header{
+background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+background-size:cover;
+background-position:center;
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+header h1{
+font-size:42px;
+}
+
+.lang{
+position:absolute;
+top:20px;
+right:20px;
+}
+
+.lang button{
+padding:8px 12px;
+border:none;
+margin-left:5px;
+cursor:pointer;
+}
+
+section{
+padding:50px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+.services{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.booking{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#25D366;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#0b3d5c;
+color:white;
+}
+
+@media(max-width:700px){
+.services{
+grid-template-columns:1fr;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="lang">
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('en')">EN</button>
+</div>
+
+<header>
+
+<h1 id="title">Snorkeling Créole Rock's</h1>
+
+<p id="intro">
+Embarquez avec moi pour une immersion exclusive au cœur de la biodiversité marine
+dans notre magnifique baie de Grand Case autour du Rocher Créole.
+</p>
+
+</header>
+
+
+<section>
+
+<h2 id="ecoTitle">Biodiversité du Rocher Créole</h2>
+
+<p id="ecoText">
+Le Rocher Créole est un site emblématique de l’environnement marin de Saint-Martin.
+Ses fonds marins abritent des récifs rocheux, herbiers marins, grottes et une grande
+diversité d’espèces tropicales.
+</p>
+
+</section>
+
+
+
+<section>
+
+<h2 id="bookingTitle">Réservation</h2>
+
+<div class="services">
+
+
+<div class="booking">
+
+<h3 id="snorkelingTitle">Snorkeling</h3>
+
+<input type="text" id="nom" placeholder="Nom">
+
+<input type="date" id="date">
+
+<input type="time" id="heure">
+
+<input type="number" id="personnes" placeholder="Personnes">
+
+<button onclick="reserverSnorkeling()" id="btnSnorkel">
+Réserver via WhatsApp
+</button>
+
+</div>
+
+
+
+<div class="booking">
+
+<h3 id="taxiTitle">Water Taxi</h3>
+
+<input type="text" id="depart" placeholder="Départ">
+
+<input type="text" id="arrivee" placeholder="Arrivée">
+
+<input type="date" id="dateTaxi">
+
+<input type="time" id="heureTaxi">
+
+<button onclick="reserverTaxi()" id="btnTaxi">
+Réserver Water Taxi
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+Grand Case – Saint Martin
+
+</footer>
+
+
+
+<script>
+
+let lang="fr"
+
+const translations={
+
+fr:{
+title:"Snorkeling Créole Rock's",
+intro:"Embarquez avec moi pour une immersion exclusive au cœur de la biodiversité marine dans notre magnifique baie de Grand Case autour du Rocher Créole.",
+ecoTitle:"Biodiversité du Rocher Créole",
+ecoText:"Le Rocher Créole est un site emblématique de l’environnement marin de Saint-Martin. Ses fonds marins abritent récifs rocheux, herbiers et de nombreuses espèces tropicales.",
+bookingTitle:"Réservation",
+snorkelingTitle:"Snorkeling",
+taxiTitle:"Water Taxi",
+btnSnorkel:"Réserver via WhatsApp",
+btnTaxi:"Réserver Water Taxi"
+},
+
+en:{
+title:"Creole Rock Snorkeling",
+intro:"Join me for an exclusive immersion into the marine biodiversity of the beautiful Grand Case bay around Creole Rock.",
+ecoTitle:"Creole Rock Biodiversity",
+ecoText:"Creole Rock is one of the most famous marine ecosystems in Saint Martin. Its underwater landscape includes rocky reefs, seagrass beds and many tropical species.",
+bookingTitle:"Booking",
+snorkelingTitle:"Snorkeling",
+taxiTitle:"Water Taxi",
+btnSnorkel:"Book via WhatsApp",
+btnTaxi:"Book Water Taxi"
+}
+
+}
+
+
+function setLang(l){
+
+lang=l
+
+document.getElementById("title").innerText=translations[l].title
+document.getElementById("intro").innerText=translations[l].intro
+document.getElementById("ecoTitle").innerText=translations[l].ecoTitle
+document.getElementById("ecoText").innerText=translations[l].ecoText
+document.getElementById("bookingTitle").innerText=translations[l].bookingTitle
+document.getElementById("snorkelingTitle").innerText=translations[l].snorkelingTitle
+document.getElementById("taxiTitle").innerText=translations[l].taxiTitle
+document.getElementById("btnSnorkel").innerText=translations[l].btnSnorkel
+document.getElementById("btnTaxi").innerText=translations[l].btnTaxi
+
+}
+
+
+
+function reserverSnorkeling(){
+
+let nom=document.getElementById("nom").value
+let date=document.getElementById("date").value
+let heure=document.getElementById("heure").value
+let personnes=document.getElementById("personnes").value
+
+let message=""
+
+if(lang==="fr"){
+
+message=`Bonjour, je souhaite réserver une session de snorkeling.
+
+Nom: ${nom}
+Date: ${date}
+Heure: ${heure}
+Personnes: ${personnes}`
+
+}else{
+
+message=`Hello, I would like to book a snorkeling trip.
+
+Name: ${nom}
+Date: ${date}
+Time: ${heure}
+People: ${personnes}`
+
+}
+
+let url="https://wa.me/TONNUMERO?text="+encodeURIComponent(message)
+
+window.open(url)
+
+}
+
+
+
+function reserverTaxi(){
+
+let depart=document.getElementById("depart").value
+let arrivee=document.getElementById("arrivee").value
+let date=document.getElementById("dateTaxi").value
+let heure=document.getElementById("heureTaxi").value
+
+let message=""
+
+if(lang==="fr"){
+
+message=`Bonjour, je souhaite réserver un Water Taxi.
+
+Départ: ${depart}
+Arrivée: ${arrivee}
+Date: ${date}
+Heure: ${heure}`
+
+}else{
+
+message=`Hello, I would like to book a Water Taxi.
+
+Departure: ${depart}
+Arrival: ${arrivee}
+Date: ${date}
+Time: ${heure}`
+
+}
+
+let url="https://wa.me/TONNUMERO?text="+encodeURIComponent(message)
+
+window.open(url)
+
+}
+
+</script>
+
+</body>
+</html>
