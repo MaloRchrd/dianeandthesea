@@ -180,7 +180,25 @@ display:none;
 align-items:center;
 justify-content:center;
 }
+.price{
+max-width:700px;
+margin:40px auto;
+padding:20px;
+background:#f5f5f5;
+border-radius:10px;
+text-align:center;
+font-family:Arial;
+}
 
+.price h2{
+margin-bottom:20px;
+}
+
+.price hr{
+margin:20px 0;
+border:none;
+border-top:1px solid #ccc;
+}
 .modal.active{
 display:flex;
 }
@@ -198,6 +216,12 @@ right:30px;
 font-size:32px;
 color:white;
 cursor:pointer;
+}
+  header{
+background:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("WhatsApp Image 2026-02-24 at 10.02.26.jpeg")
+center/cover no-repeat;
 }
 
 @media(max-width:700px){
@@ -220,6 +244,10 @@ grid-template-columns:1fr;
 
 
 <header>
+  <div style="position:absolute; top:20px; left:20px;">
+<img src="Adobe Express - file.png" 
+style="height:80px;">
+</div>
 
 <h1 data-fr="🐠 Snorkeling Créole Rock"
 data-en="🐠 Creole Rock Snorkeling"></h1>
@@ -284,6 +312,68 @@ data-en="Creole Rock is an iconic site in Saint Martin known for its rocky reefs
 
 </section>
 
+  <section class="price">
+  <h2>Price / Tarifs</h2>
+
+  <p><strong>3 personnes max</strong></p>
+
+  <p>
+  60€ / $ per person<br>
+  30€ / $ child under 10
+  </p>
+
+  <p>
+  Total duration including trip: <strong>1h30 – 2h</strong><br>
+  +20€ / $ per additional hour / person
+  </p>
+
+  <hr>
+
+  <p>
+  <strong>Departure</strong><br>
+  Dinghy Dock Grand Case<br>
+  Between Quai 58 bar and Max Place
+  </p>
+
+  <hr>
+
+  <p>
+  <strong>Schedule</strong><br>
+  Wednesday to Sunday
+  </p>
+
+  <p>
+  1st trip: 10:00 – 12:00<br>
+  2nd trip: 14:00 – 16:00
+  </p>
+
+  <hr>
+
+  <p>
+  <strong>Français</strong><br>
+  3 personnes maximum<br>
+  60€ / $ par personne<br>
+  30€ / $ enfant -10 ans
+  </p>
+
+  <p>
+  Durée totale incluant le trajet : <strong>1h30 / 2h</strong><br>
+  +20€ / $ / pers pour chaque heure supplémentaire
+  </p>
+
+  <p>
+  Départ : Dinghy Dock Grand Case<br>
+  Entre les bars Quai 58 et Max Place
+  </p>
+
+  <p>
+  Du mercredi au dimanche<br>
+  1ère sortie : 10h – 12h<br>
+  2ème sortie : 14h – 16h
+  </p>
+
+</section>
+
 
 
 <section>
@@ -293,12 +383,11 @@ data-en="Gallery"></h2>
 
 <div class="photo-grid">
 
-<img src="snorkel1.jpg" onclick="openModal(this.src)">
-<img src="snorkel2.jpg" onclick="openModal(this.src)">
-<img src="snorkel3.jpg" onclick="openModal(this.src)">
-<img src="snorkel4.jpg" onclick="openModal(this.src)">
-<img src="snorkel5.jpg" onclick="openModal(this.src)">
-<img src="snorkel6.jpg" onclick="openModal(this.src)">
+<img src="WhatsApp Image 2026-02-24 at 09.45.13.jpeg" onclick="openModal(this.src)">
+<img src="WhatsApp Image 2026-02-24 at 10.02.26.jpeg" onclick="openModal(this.src)">
+<img src="WhatsApp Image 2026-02-24 at 10.02.25(2).jpeg" onclick="openModal(this.src)">
+<img src="WhatsApp Image 2026-02-24 at 10.02.25(1).jpeg" onclick="openModal(this.src)">
+<img src="WhatsApp Image 2026-02-24 at 10.02.25.jpeg" onclick="openModal(this.src)">
 
 </div>
 
