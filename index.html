@@ -1,54 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
+<title>Snorkeling Creole Rock – Grand Case</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Snorkeling Creole Rock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-font-family:Arial;
 margin:0;
-background:#f4f9fb;
+font-family:Segoe UI, sans-serif;
+background:#f4fbff;
 color:#333;
 }
 
-header{
-background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
-background-size:cover;
-background-position:center;
-color:white;
-text-align:center;
-padding:100px 20px;
-}
-
-header h1{
-font-size:42px;
-}
-
-.lang{
+.lang-switch{
 position:absolute;
 top:20px;
 right:20px;
 }
 
-.lang button{
-padding:8px 12px;
+.lang-switch button{
+background:white;
 border:none;
-margin-left:5px;
+padding:8px 14px;
+border-radius:20px;
 cursor:pointer;
+font-weight:bold;
+margin-left:5px;
 }
 
-section{
-padding:50px 20px;
-max-width:1000px;
+header{
+background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("https://images.unsplash.com/photo-1544551763-46a013bb70d5") center/cover no-repeat;
+
+color:white;
+text-align:center;
+padding:120px 20px;
+position:relative;
+}
+
+header h1{
+font-size:3rem;
+font-family:'Satisfy',cursive;
+}
+
+header p{
+font-size:1.2rem;
+max-width:700px;
 margin:auto;
 }
 
-.services{
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 28px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+section{
+padding:70px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+section h2{
+text-align:center;
+font-size:2.4rem;
+margin-bottom:40px;
+font-family:'Satisfy',cursive;
+color:#0b6fa4;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.photo-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+}
+
+.photo-grid img{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+}
+
+.booking-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:30px;
@@ -57,8 +123,8 @@ gap:30px;
 .booking{
 background:white;
 padding:30px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 input{
@@ -71,20 +137,71 @@ button{
 width:100%;
 padding:14px;
 background:#25D366;
-color:white;
 border:none;
+color:white;
 cursor:pointer;
+font-size:16px;
+}
+
+.contact{
+background:#eaf6ff;
+text-align:center;
+padding:80px 20px;
 }
 
 footer{
+background:#003c57;
+color:white;
 text-align:center;
 padding:20px;
-background:#0b3d5c;
+}
+
+.whatsapp-float{
+position:fixed;
+bottom:25px;
+right:25px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+text-align:center;
+font-size:28px;
+line-height:60px;
 color:white;
+text-decoration:none;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.85);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal.active{
+display:flex;
+}
+
+.modal img{
+max-width:90%;
+max-height:85%;
+border-radius:15px;
+}
+
+.modal-close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:32px;
+color:white;
+cursor:pointer;
 }
 
 @media(max-width:700px){
-.services{
+.booking-grid{
 grid-template-columns:1fr;
 }
 }
@@ -95,32 +212,63 @@ grid-template-columns:1fr;
 
 <body>
 
-<div class="lang">
-<button onclick="setLang('fr')">FR</button>
-<button onclick="setLang('en')">EN</button>
+
+<div class="lang-switch">
+<button onclick="setLang('fr')">🇫🇷</button>
+<button onclick="setLang('en')">🇬🇧</button>
 </div>
+
 
 <header>
 
-<h1 id="title">Snorkeling Créole Rock's</h1>
+<h1 data-fr="🐠 Snorkeling Créole Rock"
+data-en="🐠 Creole Rock Snorkeling"></h1>
 
-<p id="intro">
-Embarquez avec moi pour une immersion exclusive au cœur de la biodiversité marine
-dans notre magnifique baie de Grand Case autour du Rocher Créole.
-</p>
+<p data-fr="Embarquez pour une immersion exclusive au cœur de la biodiversité marine dans la magnifique baie de Grand Case autour du Rocher Créole."
+data-en="Join us for an exclusive immersion into the marine biodiversity of the beautiful Grand Case bay around Creole Rock."></p>
+
+<a href="#booking" class="btn"
+data-fr="Réserver l'expérience"
+data-en="Book the experience"></a>
 
 </header>
 
 
+
 <section>
 
-<h2 id="ecoTitle">Biodiversité du Rocher Créole</h2>
+<h2 data-fr="Une expérience unique"
+data-en="A unique experience"></h2>
 
-<p id="ecoText">
-Le Rocher Créole est un site emblématique de l’environnement marin de Saint-Martin.
-Ses fonds marins abritent des récifs rocheux, herbiers marins, grottes et une grande
-diversité d’espèces tropicales.
-</p>
+<div class="features">
+
+<div class="card">
+<h3 data-fr="🐠 Snorkeling guidé"
+data-en="🐠 Guided snorkeling"></h3>
+
+<p data-fr="Explorez les récifs et la faune tropicale du Rocher Créole."
+data-en="Explore reefs and tropical marine life around Creole Rock."></p>
+</div>
+
+
+<div class="card">
+<h3 data-fr="🐢 Faune exceptionnelle"
+data-en="🐢 Amazing marine life"></h3>
+
+<p data-fr="Tortues, raies, poissons tropicaux et récifs coralliens."
+data-en="Turtles, rays, tropical fish and coral reefs."></p>
+</div>
+
+
+<div class="card">
+<h3 data-fr="🚤 Water Taxi"
+data-en="🚤 Water Taxi"></h3>
+
+<p data-fr="Transport rapide entre Grand Case, Pinel, Orient Bay."
+data-en="Fast water taxi between Grand Case, Pinel and Orient Bay."></p>
+</div>
+
+</div>
 
 </section>
 
@@ -128,46 +276,75 @@ diversité d’espèces tropicales.
 
 <section>
 
-<h2 id="bookingTitle">Réservation</h2>
+<h2 data-fr="Biodiversité du Rocher Créole"
+data-en="Creole Rock Biodiversity"></h2>
 
-<div class="services">
+<p data-fr="Le Rocher Créole est un site emblématique de Saint-Martin connu pour ses récifs rocheux, ses herbiers marins et ses grottes sous-marines qui abritent une grande diversité d'espèces."
+data-en="Creole Rock is an iconic site in Saint Martin known for its rocky reefs, seagrass beds and underwater caves hosting a rich biodiversity."></p>
 
+</section>
+
+
+
+<section>
+
+<h2 data-fr="Galerie"
+data-en="Gallery"></h2>
+
+<div class="photo-grid">
+
+<img src="snorkel1.jpg" onclick="openModal(this.src)">
+<img src="snorkel2.jpg" onclick="openModal(this.src)">
+<img src="snorkel3.jpg" onclick="openModal(this.src)">
+<img src="snorkel4.jpg" onclick="openModal(this.src)">
+<img src="snorkel5.jpg" onclick="openModal(this.src)">
+<img src="snorkel6.jpg" onclick="openModal(this.src)">
+
+</div>
+
+</section>
+
+
+
+<section id="booking">
+
+<h2 data-fr="Réservation"
+data-en="Booking"></h2>
+
+<div class="booking-grid">
 
 <div class="booking">
 
-<h3 id="snorkelingTitle">Snorkeling</h3>
+<h3 data-fr="Snorkeling"
+data-en="Snorkeling"></h3>
 
-<input type="text" id="nom" placeholder="Nom">
+<input id="nom" placeholder="Name">
 
 <input type="date" id="date">
 
 <input type="time" id="heure">
 
-<input type="number" id="personnes" placeholder="Personnes">
+<input type="number" id="personnes" placeholder="People">
 
-<button onclick="reserverSnorkeling()" id="btnSnorkel">
-Réserver via WhatsApp
-</button>
+<button onclick="bookSnorkel()">WhatsApp</button>
 
 </div>
 
 
-
 <div class="booking">
 
-<h3 id="taxiTitle">Water Taxi</h3>
+<h3 data-fr="Water Taxi"
+data-en="Water Taxi"></h3>
 
-<input type="text" id="depart" placeholder="Départ">
+<input id="depart" placeholder="Departure">
 
-<input type="text" id="arrivee" placeholder="Arrivée">
+<input id="arrivee" placeholder="Arrival">
 
 <input type="date" id="dateTaxi">
 
 <input type="time" id="heureTaxi">
 
-<button onclick="reserverTaxi()" id="btnTaxi">
-Réserver Water Taxi
-</button>
+<button onclick="bookTaxi()">WhatsApp</button>
 
 </div>
 
@@ -176,136 +353,135 @@ Réserver Water Taxi
 </section>
 
 
+
+<section class="contact">
+
+<h2 data-fr="Contact"
+data-en="Contact"></h2>
+
+<p>WhatsApp : +590 ...</p>
+
+</section>
+
+
+
 <footer>
 
-Grand Case – Saint Martin
+© 2026 Creole Rock Snorkeling – Saint Martin
 
 </footer>
 
 
 
+<a class="whatsapp-float" id="waFloat">💬</a>
+
+
+
+<div class="modal" id="modal" onclick="closeModal(event)">
+<span class="modal-close">×</span>
+<img id="modal-img">
+</div>
+
+
+
 <script>
 
+const whatsappNumber="TONNUMERO"
+
 let lang="fr"
-
-const translations={
-
-fr:{
-title:"Snorkeling Créole Rock's",
-intro:"Embarquez avec moi pour une immersion exclusive au cœur de la biodiversité marine dans notre magnifique baie de Grand Case autour du Rocher Créole.",
-ecoTitle:"Biodiversité du Rocher Créole",
-ecoText:"Le Rocher Créole est un site emblématique de l’environnement marin de Saint-Martin. Ses fonds marins abritent récifs rocheux, herbiers et de nombreuses espèces tropicales.",
-bookingTitle:"Réservation",
-snorkelingTitle:"Snorkeling",
-taxiTitle:"Water Taxi",
-btnSnorkel:"Réserver via WhatsApp",
-btnTaxi:"Réserver Water Taxi"
-},
-
-en:{
-title:"Creole Rock Snorkeling",
-intro:"Join me for an exclusive immersion into the marine biodiversity of the beautiful Grand Case bay around Creole Rock.",
-ecoTitle:"Creole Rock Biodiversity",
-ecoText:"Creole Rock is one of the most famous marine ecosystems in Saint Martin. Its underwater landscape includes rocky reefs, seagrass beds and many tropical species.",
-bookingTitle:"Booking",
-snorkelingTitle:"Snorkeling",
-taxiTitle:"Water Taxi",
-btnSnorkel:"Book via WhatsApp",
-btnTaxi:"Book Water Taxi"
-}
-
-}
-
 
 function setLang(l){
 
 lang=l
+document.documentElement.lang=l
 
-document.getElementById("title").innerText=translations[l].title
-document.getElementById("intro").innerText=translations[l].intro
-document.getElementById("ecoTitle").innerText=translations[l].ecoTitle
-document.getElementById("ecoText").innerText=translations[l].ecoText
-document.getElementById("bookingTitle").innerText=translations[l].bookingTitle
-document.getElementById("snorkelingTitle").innerText=translations[l].snorkelingTitle
-document.getElementById("taxiTitle").innerText=translations[l].taxiTitle
-document.getElementById("btnSnorkel").innerText=translations[l].btnSnorkel
-document.getElementById("btnTaxi").innerText=translations[l].btnTaxi
+document.querySelectorAll('[data-fr]').forEach(el=>{
+el.textContent=el.getAttribute("data-"+l)
+})
+
+updateWhatsapp()
+
+}
+
+function updateWhatsapp(){
+
+const msg={
+fr:"Bonjour, je souhaite des informations pour le snorkeling au Rocher Créole.",
+en:"Hello, I would like information about Creole Rock snorkeling."
+}
+
+document.getElementById("waFloat").href=
+"https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(msg[lang])
 
 }
 
 
-
-function reserverSnorkeling(){
+function bookSnorkel(){
 
 let nom=document.getElementById("nom").value
 let date=document.getElementById("date").value
 let heure=document.getElementById("heure").value
 let personnes=document.getElementById("personnes").value
 
-let message=""
-
-if(lang==="fr"){
-
-message=`Bonjour, je souhaite réserver une session de snorkeling.
+let message=lang==="fr"
+?`Bonjour je souhaite réserver un snorkeling.
 
 Nom: ${nom}
 Date: ${date}
 Heure: ${heure}
 Personnes: ${personnes}`
 
-}else{
-
-message=`Hello, I would like to book a snorkeling trip.
+:`Hello I would like to book snorkeling.
 
 Name: ${nom}
 Date: ${date}
 Time: ${heure}
 People: ${personnes}`
 
-}
-
-let url="https://wa.me/TONNUMERO?text="+encodeURIComponent(message)
-
-window.open(url)
+window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message))
 
 }
 
 
-
-function reserverTaxi(){
+function bookTaxi(){
 
 let depart=document.getElementById("depart").value
 let arrivee=document.getElementById("arrivee").value
 let date=document.getElementById("dateTaxi").value
 let heure=document.getElementById("heureTaxi").value
 
-let message=""
-
-if(lang==="fr"){
-
-message=`Bonjour, je souhaite réserver un Water Taxi.
+let message=lang==="fr"
+?`Bonjour je souhaite réserver un Water Taxi.
 
 Départ: ${depart}
 Arrivée: ${arrivee}
 Date: ${date}
 Heure: ${heure}`
 
-}else{
-
-message=`Hello, I would like to book a Water Taxi.
+:`Hello I would like to book a Water Taxi.
 
 Departure: ${depart}
 Arrival: ${arrivee}
 Date: ${date}
 Time: ${heure}`
 
-}
-
-let url="https://wa.me/TONNUMERO?text="+encodeURIComponent(message)
-
-window.open(url)
+window.open("https://wa.me/"+whatsappNumber+"?text="+encodeURIComponent(message))
 
 }
+
+
+function openModal(src){
+document.getElementById("modal-img").src=src
+document.getElementById("modal").classList.add("active")
+}
+
+function closeModal(e){
+if(e.target.id==="modal"||e.target.classList.contains("modal-close")){
+document.getElementById("modal").classList.remove("active")
+}
+}
+
+setLang("fr")
 
 </script>
 
